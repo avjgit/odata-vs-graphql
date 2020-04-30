@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using SampleUniversity.Data;
+using ContosoUniversity.Data;
 
 namespace SampleUniversity
 {
@@ -26,7 +27,8 @@ namespace SampleUniversity
                 try
                 {
                     var context = services.GetRequiredService<UniversityContext>();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureCreated();
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {
