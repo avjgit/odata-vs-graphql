@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using SampleUniversity.Data;
+using Microsoft.AspNet.OData.Extensions;
 
 namespace SampleUniversity
 {
@@ -29,6 +30,8 @@ namespace SampleUniversity
 
             services.AddDbContext<UniversityContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("UniversityContext")));
+
+            services.AddOData();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +59,12 @@ namespace SampleUniversity
             {
                 endpoints.MapRazorPages();
             });
+
+            //app.UseMvc(routeBuilder =>
+            //{
+            //    routeBuilder.EnableDependencyInjection();
+            //    routeBuilder.Expand().Select();
+            //});
         }
     }
 }
