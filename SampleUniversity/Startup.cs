@@ -67,7 +67,7 @@ namespace SampleUniversity
             app.UseMvc(routeBuilder =>
             {
                 routeBuilder.EnableDependencyInjection();
-                routeBuilder.Expand().Select();
+                routeBuilder.Expand().Select().OrderBy().Filter();
             });
 
             var builder = new ODataConventionModelBuilder(app.ApplicationServices);
