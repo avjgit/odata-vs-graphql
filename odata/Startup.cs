@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OData.Edm;
+using odata.Models;
 
 namespace odata
 {
@@ -27,6 +30,8 @@ namespace odata
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+
             services.AddOData();
         }
 
@@ -48,6 +53,18 @@ namespace odata
             {
                 endpoints.MapControllers();
             });
+
+            app.UseMvc(p =>
+            {
+                p.MapODataServiceRoute("odata", "odata", GetEdmModel());
+            });
+        }
+        private static IEdmModel GetEdmModel()
+        {
+            var builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Album>("Albums");
+            builder.EntitySet<Song>("Songs");
+            return builder.GetEdmModel();
         }
     }
 }

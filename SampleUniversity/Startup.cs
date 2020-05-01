@@ -31,6 +31,8 @@ namespace SampleUniversity
             services.AddDbContext<UniversityContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("UniversityContext")));
 
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+
             services.AddOData();
         }
 
@@ -60,11 +62,11 @@ namespace SampleUniversity
                 endpoints.MapRazorPages();
             });
 
-            //app.UseMvc(routeBuilder =>
-            //{
-            //    routeBuilder.EnableDependencyInjection();
-            //    routeBuilder.Expand().Select();
-            //});
+            app.UseMvc(routeBuilder =>
+            {
+                routeBuilder.EnableDependencyInjection();
+                routeBuilder.Expand().Select();
+            });
         }
     }
 }
