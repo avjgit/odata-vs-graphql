@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleUniversity", "SampleU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "odata", "odata\odata.csproj", "{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "odata2", "odata2\odata2.csproj", "{918CA33A-DA03-463B-9114-F2A40AC8EDBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{918CA33A-DA03-463B-9114-F2A40AC8EDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{918CA33A-DA03-463B-9114-F2A40AC8EDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{918CA33A-DA03-463B-9114-F2A40AC8EDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{918CA33A-DA03-463B-9114-F2A40AC8EDBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
