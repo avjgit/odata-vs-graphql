@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using SampleUniversity.Data;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Builder;
+using SampleUniversity.Model;
 
 namespace SampleUniversity
 {
@@ -31,7 +33,7 @@ namespace SampleUniversity
             services.AddDbContext<UniversityContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("UniversityContext")));
 
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMvc(option => option.EnableEndpointRouting = false).AddNewtonsoftJson();
 
             services.AddOData();
         }
@@ -67,6 +69,22 @@ namespace SampleUniversity
                 routeBuilder.EnableDependencyInjection();
                 routeBuilder.Expand().Select();
             });
+
+            var builder = new ODataConventionModelBuilder(app.ApplicationServices);
+
+            builder.EntitySet<Student>("Students");
+
+            //app.UseMvc(routeBuilder =>
+            //{
+            //    routeBuilder.EnableDependencyInjection();
+
+            //    // and this line to enable OData query option, for example $filter
+
+            //    routeBuilder.Expand().Select().OrderBy().Filter();
+
+            //    routeBuilder.MapODataServiceRoute("ODataRoute", "api", builder.GetEdmModel());
+
+            //});
         }
     }
 }
