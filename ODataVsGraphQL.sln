@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUniversity", "SampleUniversity\SampleUniversity.csproj", "{C2512CC0-CB23-4FFA-8278-1C5232C45E14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleUniversity", "SampleUniversity\SampleUniversity.csproj", "{C2512CC0-CB23-4FFA-8278-1C5232C45E14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "odata", "odata\odata.csproj", "{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C2512CC0-CB23-4FFA-8278-1C5232C45E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2512CC0-CB23-4FFA-8278-1C5232C45E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2512CC0-CB23-4FFA-8278-1C5232C45E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11EF24F-A0A8-457A-A5E2-AC9BC696A213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
