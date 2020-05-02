@@ -24,7 +24,8 @@ namespace SampleUniversity.OdataApi
 
         // GET: api/Students
         [HttpGet]
-        [EnableQuery()]
+        // EnableQuery atribūts iespējo OData sintakses vaicājumus
+        [EnableQuery()] 
         public IQueryable<Student> GetStudents([FromServices]UniversityContext context)
         {
             return _context.Students;

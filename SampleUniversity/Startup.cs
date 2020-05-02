@@ -21,8 +21,10 @@ namespace SampleUniversity
             services.AddDbContext<UniversityContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("UniversityContext")));
 
+            // pievieno MVC, atrisinot jaunākas Core versijas un OData maršrutēšanas problēmas
             services.AddMvc(option => option.EnableEndpointRouting = false).AddNewtonsoftJson();
 
+            // pievieno OData
             services.AddOData();
         }
 
@@ -38,10 +40,12 @@ namespace SampleUniversity
                 endpoints.MapRazorPages();
             });
 
+            // ieslēdz OData iespējas
             app.UseMvc(routeBuilder =>
             {
                 routeBuilder.EnableDependencyInjection();
-                routeBuilder.Expand().Select().OrderBy().Filter();
+                // tieši norāda, kādas OData iespējas pieejamas
+                routeBuilder.Expand().Select().OrderBy().Filter(); 
             });
         }
     }
