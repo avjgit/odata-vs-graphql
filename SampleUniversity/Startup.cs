@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SampleUniversity.Data;
 using Microsoft.AspNet.OData.Extensions;
-using Microsoft.AspNet.OData.Builder;
-using SampleUniversity.Model;
 
 namespace SampleUniversity
 {
@@ -28,7 +26,6 @@ namespace SampleUniversity
             services.AddOData();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseHttpsRedirection();
@@ -46,10 +43,6 @@ namespace SampleUniversity
                 routeBuilder.EnableDependencyInjection();
                 routeBuilder.Expand().Select().OrderBy().Filter();
             });
-
-            //var builder = new ODataConventionModelBuilder(app.ApplicationServices);
-
-            //builder.EntitySet<Student>("Students");
         }
     }
 }
