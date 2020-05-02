@@ -17,10 +17,7 @@ namespace SampleUniversity.OdataApi
     {
         private readonly UniversityContext _context;
 
-        public StudentsController(UniversityContext context)
-        {
-            _context = context;
-        }
+        public StudentsController(UniversityContext context) => _context = context;
 
         // GET: api/Students
         [HttpGet]

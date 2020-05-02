@@ -5,10 +5,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Kursu saraksts</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Pievienot jaunu</a>
 </p>
 <table class="table">
     <thead>
@@ -32,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.Credits)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.CourseID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CourseID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CourseID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.CourseID">Rediģēt</a> |
+                <a asp-page="./Details" asp-route-id="@item.CourseID">Skatīt</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CourseID">Dzēst</a>
             </td>
         </tr>
 }

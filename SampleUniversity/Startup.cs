@@ -28,7 +28,7 @@ namespace SampleUniversity
             services.AddOData();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app)
         {
             app.UseHttpsRedirection();
             app.UseStaticFiles();
