@@ -19,13 +19,13 @@ namespace ContosoUniversity.Data
 
             var students = new Student[]
             {
-                new Student{FirstMidName="Cīrulis",LastName="Andrejs",EnrollmentDate=DateTime.Parse("2019-09-01")},
-                new Student{FirstMidName="Rutka",LastName="Maija",EnrollmentDate=DateTime.Parse("2017-09-01")},
-                new Student{FirstMidName="Osnovskis",LastName="Dmitrijs",EnrollmentDate=DateTime.Parse("2018-09-01")},
-                new Student{FirstMidName="Liesma",LastName="Laima",EnrollmentDate=DateTime.Parse("2017-09-01")},
-                new Student{FirstMidName="Bērziņa",LastName="Diāna",EnrollmentDate=DateTime.Parse("2017-09-01")},
-                new Student{FirstMidName="Paraudziņš",LastName="Jānis",EnrollmentDate=DateTime.Parse("2016-09-01")},
-                new Student{FirstMidName="Simenons",LastName="Žoržs",EnrollmentDate=DateTime.Parse("2018-09-01")},
+                new Student{FirstMidName="Andrejs",LastName="Cīrulis",EnrollmentDate=DateTime.Parse("2019-09-01")},
+                new Student{FirstMidName="Maija",LastName="Rutka",EnrollmentDate=DateTime.Parse("2017-09-01")},
+                new Student{FirstMidName="Dmitrijs",LastName="Osnovskis",EnrollmentDate=DateTime.Parse("2018-09-01")},
+                new Student{FirstMidName="Laima",LastName="Liesma",EnrollmentDate=DateTime.Parse("2017-09-01")},
+                new Student{FirstMidName="Diāna",LastName="Bērziņa",EnrollmentDate=DateTime.Parse("2017-09-01")},
+                new Student{FirstMidName="Jānis",LastName="Paraudziņš",EnrollmentDate=DateTime.Parse("2016-09-01")},
+                new Student{FirstMidName="Žoržs",LastName="Simenons",EnrollmentDate=DateTime.Parse("2018-09-01")}
             };
             foreach (Student s in students)
             {
