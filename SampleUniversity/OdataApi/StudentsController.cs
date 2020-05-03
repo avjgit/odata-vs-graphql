@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.OData;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SampleUniversity.Data;
@@ -23,7 +20,7 @@ namespace SampleUniversity.OdataApi
         [HttpGet]
         // EnableQuery atribūts iespējo OData sintakses vaicājumus
         [EnableQuery()] 
-        public IQueryable<Student> GetStudents([FromServices]UniversityContext context)
+        public IQueryable<Student> GetStudents([FromServices]UniversityContext _context)
         {
             return _context.Students;
         }
