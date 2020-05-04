@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotChocolate.Types;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,7 @@ namespace SampleUniversity.Model
         public DateTime EnrollmentDate { get; set; }
 
         [DisplayName("Reģistrācijas kursiem")]
+        [UseFiltering]
         public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

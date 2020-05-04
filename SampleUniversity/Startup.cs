@@ -6,6 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SampleUniversity.Data;
 using Microsoft.AspNet.OData.Extensions;
+using HotChocolate;
+using SampleUniversity.OdataApi;
+using HotChocolate.Execution.Configuration;
+using HotChocolate.AspNetCore;
 
 namespace SampleUniversity
 {
@@ -26,6 +30,13 @@ namespace SampleUniversity
 
             // pievieno OData
             services.AddOData();
+
+            // ieslēdz GraphQL
+            services.AddGraphQL(
+                SchemaBuilder.New()
+                    .AddQueryType<GraphqlResolver>()
+                    .Create(),
+                new QueryExecutionOptions { ForceSerialExecution = true });
         }
 
         public static void Configure(IApplicationBuilder app)
@@ -34,6 +45,9 @@ namespace SampleUniversity
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
+
+            app.UseGraphQL();
+            app.UsePlayground();
 
             app.UseEndpoints(endpoints =>
             {
@@ -47,6 +61,8 @@ namespace SampleUniversity
                 // tieši norāda, kādas OData iespējas pieejamas
                 routeBuilder.Expand().Select().OrderBy().Filter(); 
             });
+
+
         }
     }
 }

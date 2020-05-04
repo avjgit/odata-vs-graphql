@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using HotChocolate.Types;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,14 +17,10 @@ namespace SampleUniversity.OdataApi
 
         public StudentsController(UniversityContext context) => _context = context;
 
-        // GET: api/Students
-        [HttpGet]
-        // EnableQuery atribūts iespējo OData sintakses vaicājumus
-        [EnableQuery()] 
-        public IQueryable<Student> GetStudents([FromServices]UniversityContext _context)
-        {
-            return _context.Students;
-        }
+        [HttpGet]       // šis iespējo vienkāršu REST pieprasījumu; GET: api/Students 
+        [EnableQuery]   // šis iespējo OData sintakses vaicājumus
+        [UseSelection]  // šis iespējo GraphQL lauku izvēli
+        public IQueryable<Student> GetStudents([FromServices]UniversityContext c) => c.Students;
 
         // GET: api/Students/5
         [HttpGet("{id}")]
