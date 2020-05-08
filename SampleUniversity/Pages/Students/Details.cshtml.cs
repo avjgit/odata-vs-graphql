@@ -41,8 +41,6 @@ namespace SampleUniversity.Pages.Students
                 return NotFound();
             }
 
-            FavoriteRepositories = await GitHubODataClient.GetRepositoryInfo(Student.FirstMidName);
-
             return Page();
         }
     }
