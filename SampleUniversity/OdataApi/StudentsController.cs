@@ -21,22 +21,22 @@ namespace SampleUniversity.OdataApi
         [HttpGet] // šis iespējo vienkāršu REST pieprasījumu; GET: api/Students 
         [EnableQuery] // šis iespējo OData sintakses vaicājumus
         [UseSelection] // šis iespējo GraphQL lauku izvēli
-        public IQueryable<StudentSearchResult> GetStudents([FromServices] UniversityContext c)
+        public IQueryable<Student> GetStudents([FromServices] UniversityContext c)
         {
-            var result = new List<StudentSearchResult>();
-            
+            var result = new List<Student>();
+
             foreach (var student in c.Students)
             {
                 var favoriteRepositories = GitHubODataClient.GetRepositoryInfo(student.FirstMidName).Result;
-
-                result.Add(new StudentSearchResult(student, favoriteRepositories.Items));
+                student.FavoriteRepositories = favoriteRepositories.Items;
+                result.Add(student);
             }
             return result.AsQueryable();
         } 
 
         // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<StudentSearchResult>> GetStudent(int id)
+        public async Task<ActionResult<Student>> GetStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
 
@@ -46,8 +46,9 @@ namespace SampleUniversity.OdataApi
             }
 
             var favoriteRepositories = await GitHubODataClient.GetRepositoryInfo(student.FirstMidName);
+            student.FavoriteRepositories = favoriteRepositories.Items;
 
-            return new StudentSearchResult(student, favoriteRepositories.Items);
+            return student;
         }
 
         // PUT: api/Students/5

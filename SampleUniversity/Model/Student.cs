@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SampleUniversity.Model
 {
@@ -24,32 +25,7 @@ namespace SampleUniversity.Model
         [UseFiltering]
         public ICollection<Enrollment> Enrollments { get; set; }
 
-    }
-
-    public class StudentSearchResult
-    {
-
-        public int ID { get; set; }
-
-        public string LastName { get; set; }
-
-        public string FirstMidName { get; set; }
-
-        public DateTime EnrollmentDate { get; set; }
-
-        public ICollection<Enrollment> Enrollments { get; set; }
-        
+        [NotMapped]
         public ICollection<Repository> FavoriteRepositories { get; set; }
-
-        public StudentSearchResult(Student s, ICollection<Repository> repos)
-        {
-            ID = s.ID;
-            LastName = s.LastName;
-            FirstMidName = s.FirstMidName;
-            EnrollmentDate = s.EnrollmentDate;
-            Enrollments = s.Enrollments;
-            FavoriteRepositories = repos;
-        }
-
     }
 }
