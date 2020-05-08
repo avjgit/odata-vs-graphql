@@ -22,15 +22,7 @@ namespace SampleUniversity.OdataApi
         [EnableQuery] // šis iespējo OData sintakses vaicājumus
         public IQueryable<Student> GetStudents([FromServices] UniversityContext c)
         {
-            var result = new List<Student>();
-
-            foreach (var student in c.Students)
-            {
-                var favoriteRepositories = GitHubODataClient.GetRepositoryInfo(student.FirstMidName).Result;
-                student.FavoriteRepositories = favoriteRepositories.Items;
-                result.Add(student);
-            }
-            return result.AsQueryable();
+            return c.Students;
         } 
 
         // GET: api/Students/5
@@ -43,9 +35,6 @@ namespace SampleUniversity.OdataApi
             {
                 return NotFound();
             }
-
-            var favoriteRepositories = await GitHubODataClient.GetRepositoryInfo(student.FirstMidName);
-            student.FavoriteRepositories = favoriteRepositories.Items;
 
             return student;
         }
