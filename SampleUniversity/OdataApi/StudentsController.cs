@@ -24,7 +24,7 @@ namespace SampleUniversity.OdataApi
 
         // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(int id)
+        public async Task<ActionResult<StudentSearchResult>> GetStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
 
@@ -33,7 +33,13 @@ namespace SampleUniversity.OdataApi
                 return NotFound();
             }
 
-            return student;
+            var studentsFavoriteRepos = await GitHubODataClient.GetRepositoryInfo(student.FirstMidName);
+
+            return new StudentSearchResult
+            {
+                Student = student,
+                FavoriteRepositories = studentsFavoriteRepos.Items
+            };
         }
 
         // PUT: api/Students/5

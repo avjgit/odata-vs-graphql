@@ -25,4 +25,10 @@ namespace SampleUniversity.Model
         public ICollection<Enrollment> Enrollments { get; set; }
 
     }
+
+    public class StudentSearchResult
+    {
+        public Student Student { get; set; }
+        public ICollection<Repository> FavoriteRepositories { get; set; }
+    }
 }
