@@ -20,7 +20,6 @@ namespace SampleUniversity.OdataApi
 
         [HttpGet] // šis iespējo vienkāršu REST pieprasījumu; GET: api/Students 
         [EnableQuery] // šis iespējo OData sintakses vaicājumus
-        [UseSelection] // šis iespējo GraphQL lauku izvēli
         public IQueryable<Student> GetStudents([FromServices] UniversityContext c)
         {
             var result = new List<Student>();
