@@ -51,6 +51,32 @@
                 }
             </table>
         </dd>
+        <dt class="col-sm-2">
+            Iecinītākie atvērtā koda repozitoriji
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Nosaukums</th>
+                    <th>URL</th>
+                    <th>Apraksts</th>
+                </tr>
+                @foreach (var item in Model.FavoriteRepositories.Items)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a href="@item.HtmlUrl">@Html.DisplayFor(modelItem => item.HtmlUrl)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+            </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <div>

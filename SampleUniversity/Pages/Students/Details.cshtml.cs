@@ -21,6 +21,8 @@ namespace SampleUniversity.Pages.Students
 
         public Student Student { get; set; }
 
+        public SearchResult FavoriteRepositories { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -38,6 +40,9 @@ namespace SampleUniversity.Pages.Students
             {
                 return NotFound();
             }
+
+            FavoriteRepositories = await GitHubODataClient.GetRepositoryInfo(Student.FirstMidName);
+
             return Page();
         }
     }

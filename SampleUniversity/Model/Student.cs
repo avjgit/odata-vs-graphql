@@ -23,5 +23,6 @@ namespace SampleUniversity.Model
         [DisplayName("Reģistrācijas kursiem")]
         [UseFiltering]
         public ICollection<Enrollment> Enrollments { get; set; }
+
     }
 }
