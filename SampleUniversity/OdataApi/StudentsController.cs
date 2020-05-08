@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HotChocolate.Types;
 using Microsoft.AspNet.OData;
@@ -17,10 +18,21 @@ namespace SampleUniversity.OdataApi
 
         public StudentsController(UniversityContext context) => _context = context;
 
-        [HttpGet]       // šis iespējo vienkāršu REST pieprasījumu; GET: api/Students 
-        [EnableQuery]   // šis iespējo OData sintakses vaicājumus
-        [UseSelection]  // šis iespējo GraphQL lauku izvēli
-        public IQueryable<Student> GetStudents([FromServices]UniversityContext c) => c.Students;
+        [HttpGet] // šis iespējo vienkāršu REST pieprasījumu; GET: api/Students 
+        [EnableQuery] // šis iespējo OData sintakses vaicājumus
+        [UseSelection] // šis iespējo GraphQL lauku izvēli
+        public IQueryable<StudentSearchResult> GetStudents([FromServices] UniversityContext c)
+        {
+            var result = new List<StudentSearchResult>();
+            
+            foreach (var student in c.Students)
+            {
+                var favoriteRepositories = GitHubODataClient.GetRepositoryInfo(student.FirstMidName).Result;
+
+                result.Add(new StudentSearchResult(student, favoriteRepositories.Items));
+            }
+            return result.AsQueryable();
+        } 
 
         // GET: api/Students/5
         [HttpGet("{id}")]
@@ -33,13 +45,9 @@ namespace SampleUniversity.OdataApi
                 return NotFound();
             }
 
-            var studentsFavoriteRepos = await GitHubODataClient.GetRepositoryInfo(student.FirstMidName);
+            var favoriteRepositories = await GitHubODataClient.GetRepositoryInfo(student.FirstMidName);
 
-            return new StudentSearchResult
-            {
-                Student = student,
-                FavoriteRepositories = studentsFavoriteRepos.Items
-            };
+            return new StudentSearchResult(student, favoriteRepositories.Items);
         }
 
         // PUT: api/Students/5

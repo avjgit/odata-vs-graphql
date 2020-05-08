@@ -28,7 +28,28 @@ namespace SampleUniversity.Model
 
     public class StudentSearchResult
     {
-        public Student Student { get; set; }
+
+        public int ID { get; set; }
+
+        public string LastName { get; set; }
+
+        public string FirstMidName { get; set; }
+
+        public DateTime EnrollmentDate { get; set; }
+
+        public ICollection<Enrollment> Enrollments { get; set; }
+        
         public ICollection<Repository> FavoriteRepositories { get; set; }
+
+        public StudentSearchResult(Student s, ICollection<Repository> repos)
+        {
+            ID = s.ID;
+            LastName = s.LastName;
+            FirstMidName = s.FirstMidName;
+            EnrollmentDate = s.EnrollmentDate;
+            Enrollments = s.Enrollments;
+            FavoriteRepositories = repos;
+        }
+
     }
 }
