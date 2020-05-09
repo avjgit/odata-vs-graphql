@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace SampleUniversity.Model
 {
@@ -26,7 +27,25 @@ namespace SampleUniversity.Model
         public ICollection<Enrollment> Enrollments { get; set; }
 
         [NotMapped]
-        public ICollection<Repository> FavoriteRepositories
-            => GitHubODataClient.GetRepositoryInfo(FirstMidName).Result.Items;
+        public IList<Repository> FavoriteRepositories
+        {
+            get => GitHubODataClient.GetRepositoryInfo(FirstMidName).Result.Items;
+            set { }
+        }
+
+        [NotMapped]
+        public Repository FavoriteRepository
+        {
+            get => GitHubODataClient.GetRepositoryInfo(FirstMidName).Result.Items.FirstOrDefault();
+            set { }
+        }
+
+        [NotMapped]
+        public Repository FavReps
+        {
+            get => new FavReps( ).FavRep;
+            set { }
+        }
+
     }
 }
