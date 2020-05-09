@@ -6,6 +6,8 @@ using Microsoft.AspNet.OData.Extensions;
 using HotChocolate;
 using HotChocolate.Execution.Configuration;
 using HotChocolate.AspNetCore;
+using Microsoft.AspNet.OData.Builder;
+using SampleUniversity.Model;
 
 namespace SampleUniversity
 {
@@ -50,15 +52,17 @@ namespace SampleUniversity
                 endpoints.MapRazorPages();
             });
 
+            var builder = new ODataConventionModelBuilder(app.ApplicationServices);
+            builder.EntitySet<Student>("Students");
+
             // ieslēdz OData iespējas
             app.UseMvc(routeBuilder =>
             {
                 routeBuilder.EnableDependencyInjection();
                 // tieši norāda, kādas OData iespējas pieejamas
-                routeBuilder.Expand().Select().OrderBy().Filter(); 
+                routeBuilder.Select().Expand().Filter().OrderBy().MaxTop(100).Count();
+                routeBuilder.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
             });
-
-
         }
     }
 }
