@@ -1,9 +1,8 @@
-﻿using SampleUniversity.Data;
-using SampleUniversity.Model;
+﻿using SampleUniversity.Model;
 using System;
 using System.Linq;
 
-namespace ContosoUniversity.Data
+namespace SampleUniversity
 {
     public static class DbInitializer
     {

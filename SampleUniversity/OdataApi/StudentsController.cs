@@ -5,7 +5,6 @@ using HotChocolate.Types;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SampleUniversity.Data;
 using SampleUniversity.Model;
 
 namespace SampleUniversity.OdataApi

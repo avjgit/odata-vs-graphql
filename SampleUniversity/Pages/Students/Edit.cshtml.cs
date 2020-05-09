@@ -4,18 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using SampleUniversity.Data;
 using SampleUniversity.Model;
 
 namespace SampleUniversity.Pages.Students
 {
     public class EditModel : PageModel
     {
-        private readonly SampleUniversity.Data.UniversityContext _context;
+        private readonly SampleUniversity.UniversityContext _context;
 
-        public EditModel(SampleUniversity.Data.UniversityContext context)
+        public EditModel(SampleUniversity.UniversityContext context)
         {
             _context = context;
         }

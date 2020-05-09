@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using SampleUniversity.Data;
+using SampleUniversity;
 using SampleUniversity.Model;
 
 namespace SampleUniversity.Pages.Students
 {
     public class DeleteModel : PageModel
     {
-        private readonly SampleUniversity.Data.UniversityContext _context;
+        private readonly SampleUniversity.UniversityContext _context;
 
-        public DeleteModel(SampleUniversity.Data.UniversityContext context)
+        public DeleteModel(SampleUniversity.UniversityContext context)
         {
             _context = context;
         }

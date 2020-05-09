@@ -25,9 +25,16 @@ namespace SampleUniversity.Model
         public ICollection<Enrollment> Enrollments { get; set; }
 
         [NotMapped]
-        public Repository FavoriteRepository
+        public Repository FavoriteRepositoryFromGitHubRest
         {
             get => GitHubODataClient.GetRepositoryInfo(FirstMidName).Result.Items.FirstOrDefault();
+            set { }
+        }
+
+        [NotMapped]
+        public Repository FavoriteRepositoryFromGitHubGraphQl
+        {
+            get => GitHubGraphQLClient.GetRepositoryInfo(FirstMidName).Result;
             set { }
         }
     }

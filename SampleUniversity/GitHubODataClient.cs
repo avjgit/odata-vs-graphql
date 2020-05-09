@@ -23,7 +23,7 @@ namespace SampleUniversity
         {
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-            Client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+            Client.DefaultRequestHeaders.Add("User-Agent", "Test");
             var streamTask = Client.GetStreamAsync("https://api.github.com/search/repositories?q=" + searchQuery);
             return await JsonSerializer.DeserializeAsync<SearchResult>(await streamTask);
         }

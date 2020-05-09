@@ -1,13 +1,9 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using SampleUniversity.Data;
 using Microsoft.AspNet.OData.Extensions;
 using HotChocolate;
-using SampleUniversity.OdataApi;
 using HotChocolate.Execution.Configuration;
 using HotChocolate.AspNetCore;
 

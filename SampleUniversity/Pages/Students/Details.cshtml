@@ -63,13 +63,13 @@
                 </tr>
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Student.FavoriteRepository.Name)
+                    @Html.DisplayFor(modelItem => Model.Student.FavoriteRepositoryFromGitHubRest.Name)
                 </td>
                 <td>
-                    <a href="@item.HtmlUrl">@Html.DisplayFor(modelItem => Model.Student.FavoriteRepository.HtmlUrl)</a>
+                    <a href="@Model.Student.FavoriteRepositoryFromGitHubRest.HtmlUrl">@Html.DisplayFor(modelItem => Model.Student.FavoriteRepositoryFromGitHubRest.HtmlUrl)</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Student.FavoriteRepository.Description)
+                    @Html.DisplayFor(modelItem => Model.Student.FavoriteRepositoryFromGitHubRest.Description)
                 </td>
             </tr>
             </table>

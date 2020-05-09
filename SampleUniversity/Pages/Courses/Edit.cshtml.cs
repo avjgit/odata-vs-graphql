@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SampleUniversity.Data;
+using SampleUniversity;
 using SampleUniversity.Model;
 
 namespace SampleUniversity.Pages.Courses
 {
     public class EditModel : PageModel
     {
-        private readonly SampleUniversity.Data.UniversityContext _context;
+        private readonly SampleUniversity.UniversityContext _context;
 
-        public EditModel(SampleUniversity.Data.UniversityContext context)
+        public EditModel(SampleUniversity.UniversityContext context)
         {
             _context = context;
         }

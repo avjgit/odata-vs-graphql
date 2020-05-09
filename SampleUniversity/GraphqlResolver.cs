@@ -2,7 +2,6 @@
 using HotChocolate;
 using HotChocolate.Types;
 using Microsoft.AspNetCore.Mvc;
-using SampleUniversity.Data;
 using SampleUniversity.Model;
 
 namespace SampleUniversity
