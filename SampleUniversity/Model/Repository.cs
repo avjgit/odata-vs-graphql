@@ -16,7 +16,7 @@ namespace SampleUniversity.Model
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonPropertyName("html_url")]
-        public string HtmlUrl { get; set; }
+        [JsonPropertyName("url")]
+        public string Url { get; set; }
     }
 }

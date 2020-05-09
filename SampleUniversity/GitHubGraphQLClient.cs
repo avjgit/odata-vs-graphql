@@ -29,7 +29,7 @@ namespace SampleUniversity
     {
         public static async Task<Repository> GetRepositoryInfo(string searchQuery)
         {
-            var auth = Convert.ToBase64String(Encoding.UTF8.GetBytes($"avjgit:77bcc2d493e53801665125ac9da5b99589ddb700"));
+            var auth = Convert.ToBase64String(Encoding.UTF8.GetBytes($"avjgit:{token}}"));
             var httpClient = new HttpClient { BaseAddress = new Uri("https://api.github.com/graphql") };
             httpClient.DefaultRequestHeaders.Add("User-Agent", "Test");
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
