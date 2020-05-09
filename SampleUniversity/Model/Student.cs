@@ -12,11 +12,9 @@ namespace SampleUniversity.Model
     {
         public int ID { get; set; }
 
-        [DisplayName("Uzvārds")]
-        public string LastName { get; set; }
-        
-        [DisplayName("Vārds")]
-        public string FirstMidName { get; set; }
+        [DisplayName("Uzvārds")] public string LastName { get; set; }
+
+        [DisplayName("Vārds")] public string FirstMidName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayName("Reģistrācijas datums")]
@@ -27,25 +25,10 @@ namespace SampleUniversity.Model
         public ICollection<Enrollment> Enrollments { get; set; }
 
         [NotMapped]
-        public IList<Repository> FavoriteRepositories
-        {
-            get => GitHubODataClient.GetRepositoryInfo(FirstMidName).Result.Items;
-            set { }
-        }
-
-        [NotMapped]
         public Repository FavoriteRepository
         {
             get => GitHubODataClient.GetRepositoryInfo(FirstMidName).Result.Items.FirstOrDefault();
             set { }
         }
-
-        [NotMapped]
-        public Repository FavReps
-        {
-            get => new FavReps( ).FavRep;
-            set { }
-        }
-
     }
 }
